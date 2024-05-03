@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="todovalue" value="">
+        <button id="btn">Add task</button>
+    </div>
+    <ol id="todolist">
+        <li></li>
+    </ol>
+    <script>
+        const tdvalue = document.getElementById('todovalue');
+        const buttn = document.getElementById('btn');
+        const tdlist = document.getElementById('todolist');
+        const tdlistli = document.getElementsByTagName('li');
+
+const addtask = () => {
+    const taskText = tdvalue.value.trim();
+    if(taskText!==""){
+        const taskItem = document.createElement("li");
+        taskItem.innerHTML = taskText;
+    }
+}
+    </script>
+</body>
+
+</html>

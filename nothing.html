@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #333;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+        }
+
+        nav ul li a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        .nav-link.active {
+            background-color: #555;
+        }
+
+        .content {
+            display: none;
+            padding: 20px;
+        }
+
+        .content.show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#" class="nav-link" data-target="home">Home</a></li>
+            <li><a href="#" class="nav-link" data-target="about">About</a></li>
+            <li><a href="#" class="nav-link" data-target="services">Services</a></li>
+            <li><a href="#" class="nav-link" data-target="contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div id="home" class="content show">Home Content</div>
+    <div id="about" class="content">About Content</div>
+    <div id="services" class="content">Services Content</div>
+    <div id="contact" class="content">Contact Content</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('.nav-link');
+            const contents = document.querySelectorAll('.content');
+
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = this.dataset.target;
+                    setActiveLink(target);
+                    showContent(target);
+                });
+            });
+
+            // Show home content by default
+            document.getElementById('home').classList.add('show');
+
+            function setActiveLink(target) {
+                links.forEach(link => {
+                    if (link.dataset.target === target) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+
+            function showContent(target) {
+                contents.forEach(content => {
+                    if (content.id === target) {
+                        content.classList.add('show');
+                    } else {
+                        content.classList.remove('show');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

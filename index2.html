@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="main">
+        100Rs
+    </div>
+    <div style="display: flex; align-items: center; column-gap: 20px;">
+        <button style="cursor: pointer;" id="minus">-</button>
+        <p><span id="value">1</span></p>
+        <button style="cursor: pointer;" id="plus">+</button>
+    </div>
+
+    <script>
+        const plusButton = document.getElementById('plus');
+        const minusButton = document.getElementById('minus');
+        const valueSpan = document.getElementById('value');
+        const cost = document.getElementById('main');
+        let value = 1;
+
+        function updateCost() {
+            cost.textContent = 100 * value + "Rs";
+        }
+
+        plusButton.addEventListener('click', function () {
+            if (value < 10) {
+                value++;
+                valueSpan.textContent = value;
+                updateCost();
+            }
+        });
+
+        minusButton.addEventListener('click', function () {
+            if (value > 1) {
+                value--;
+                valueSpan.textContent = value;
+                updateCost();
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

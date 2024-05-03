@@ -1,0 +1,170 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.main {
+  padding-top: 24px;
+  background-image: linear-gradient(
+    to right,
+    rgb(18, 18, 221),
+    rgb(99, 87, 228),
+    rgb(24, 6, 156)
+  );
+
+  padding-bottom: 40px;
+  padding-inline: 16px;
+}
+.navbar {
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+}
+li {
+  font-size: large;
+  font-weight: 700;
+  list-style: none;
+  color: white;
+  cursor: pointer;
+}
+/* li:hover {
+  color: palevioletred;
+} */
+li:target {
+  color: palevioletred;
+}
+.input {
+  background-color: lightslategray;
+  color: white;
+  /* width: 180px; */
+  width: 45%;
+  padding-block: 8px;
+  border-radius: 8px;
+  border: none;
+  padding-inline: 4px;
+  outline: none;
+}
+::placeholder {
+  color: white;
+  font-size: medium;
+  font-weight: 500;
+}
+.sayhello {
+  font-size: larger;
+  font-weight: 700;
+  color: palevioletred;
+}
+.letus {
+  font-size: medium;
+  font-weight: 400;
+  color: white;
+}
+.inmain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
+  max-width: 393px;
+  width: 100%;
+}
+.textarea {
+  width: 100%;
+  background-color: lightslategray;
+  padding: 8px;
+  border-radius: 8px;
+  outline: none;
+}
+.btn {
+  width: 87px;
+  background-color: palevioletred;
+  color: white;
+  font-weight: 600;
+  font-size: large;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid palevioletred;
+}
+.btn:hover {
+  background-color: white;
+  color: palevioletred;
+}
+.mainjust {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.call {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+.follow {
+  color: palevioletred;
+  font-size: large;
+  font-weight: 700;
+}
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 50px;
+  align-items: start;
+}
+.cotinfo {
+  color: palevioletred;
+  font-size: xx-large;
+  font-weight: 700;
+  width: 20px;
+}
+.contactmain {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.addres {
+  color: white;
+  font-size: large;
+  font-weight: 500;
+  width: 165px;
+}
+.timing {
+  color: white;
+  font-size: large;
+  font-weight: 500;
+}
+.socialmedia {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.social {
+  font-size: large;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+.social:hover {
+  color: palevioletred;
+}
+
+::-webkit-resizer {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 60px;
+  }
+  .mainjust {
+    margin: auto;
+  }
+  .contactmain {
+    margin: auto;
+  }
+}

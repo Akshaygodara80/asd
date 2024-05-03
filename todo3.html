@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <div>
+            <input type="text" class="todovalue" value="">
+            <button class="btn">Add todo</button>
+        </div>
+        <ol class="todolist"></ol>
+    </form>
+    <script>
+        const todolist = document.querySelector('.todolist');
+        const todovalue = document.querySelector('.todovalue');
+        let todolistvalue = [];
+
+        const gettodoListfromlS = () => {
+            return JSON.parse(localStorage.getItem('todostor')) || [];
+        }
+
+        const addtodolocalStorage = (todo) => {
+            localStorage.setItem('todostor', JSON.stringify(todo));
+        }
+
+        const Showtodolist = () => {
+            todolistvalue = gettodoListfromlS();
+            todolist.innerHTML = ''; // Clear the list before rendering
+            todolistvalue.forEach((curtodo, index) => {
+                const liElement = document.createElement('li');
+                const spanElement = document.createElement('span');
+                spanElement.textContent = curtodo;
+                spanElement.classList.add('todo-text');
+                spanElement.setAttribute('data-index', index); // Add index as a data attribute
+                spanElement.addEventListener('click', editTodo); // Add event listener to span
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.addEventListener('click', () => deleteTodo(
+                    index)); // Add event listener to delete button
+
+                liElement.appendChild(spanElement);
+                liElement.appendChild(deleteButton);
+                todolist.append(liElement);
+            })
+        }
+
+        const addtodolist = (e) => {
+            e.preventDefault();
+            todolistvalue = gettodoListfromlS();
+            let newtodo = todovalue.value.trim();
+            todovalue.value = ""
+            if (newtodo.length !== 0 && !todolistvalue.includes(newtodo)) {
+                todolistvalue.push(newtodo)
+                todolistvalue = [...new Set(todolistvalue)]
+                addtodolocalStorage(todolistvalue);
+                Showtodolist(); // Render the todo list
+            }
+        }
+
+        const editTodo = (event) => {
+            const index = event.target.getAttribute('data-index');
+            const newText = prompT('Edit todo:', event.target.textContent);
+            if (newText !== null) {
+                todolistvalue[index] = newText;
+                addtodolocalStorage(todolistvalue);
+                Showtodolist(); // Render the todo list
+            }
+        }
+
+        const deleteTodo = (index) => {
+            todolistvalue.splice(index, 1);
+            addtodolocalStorage(todolistvalue);
+            Showtodolist(); // Render the todo list
+        }
+
+        Showtodolist();
+        document.querySelector('.btn').addEventListener('click', (e) => {
+            addtodolist(e);
+        });
+    </script>
+</body>
+
+</html>
